@@ -5,19 +5,28 @@
  */
 package com.alan.quiz2;
 
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author ALAN
  */
 public class TokoJFrame extends javax.swing.JFrame {
-
-    /**
-     * Creates new form TokoJFrame
-     */
+    
     public TokoJFrame() {
         initComponents();
+        btnAdd.setEnabled(false);
+        btnRemove.setEnabled(false);
+        btnSave.setEnabled(false);
+        btnCancel.setEnabled(false);
+        
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,22 +38,22 @@ public class TokoJFrame extends javax.swing.JFrame {
 
         lableCode = new javax.swing.JLabel();
         txtCode = new javax.swing.JTextField();
-        btnNew = new javax.swing.JToggleButton();
         labelItem = new javax.swing.JLabel();
         comboItem = new javax.swing.JComboBox<>();
         txtJumlahItem = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        btnAdd = new javax.swing.JToggleButton();
-        btnRemove = new javax.swing.JToggleButton();
-        btnSave = new javax.swing.JToggleButton();
-        btnCancel = new javax.swing.JToggleButton();
+        btnSave = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
+        btnNew = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
+        btnRemove = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lableCode.setText("Code");
 
-        btnNew.setText("New");
+        txtCode.setEnabled(false);
 
         labelItem.setText("Items");
 
@@ -60,13 +69,20 @@ public class TokoJFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        btnAdd.setText("Add");
-
-        btnRemove.setText("Remove");
-
         btnSave.setText("Save");
 
         btnCancel.setText("Cancel");
+
+        btnNew.setText("New");
+        btnNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewActionPerformed(evt);
+            }
+        });
+
+        btnAdd.setText("Add");
+
+        btnRemove.setText("Remove");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,20 +104,16 @@ public class TokoJFrame extends javax.swing.JFrame {
                             .addComponent(txtJumlahItem)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(btnCancel))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnRemove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnNew, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRemove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,14 +134,27 @@ public class TokoJFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRemove))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCancel)
-                    .addComponent(btnSave))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSave)
+                    .addComponent(btnCancel))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+        Date d = new Date();
+        SimpleDateFormat f = new SimpleDateFormat("yyMMdd");
+        String dateString = f.format(d);
+        
+        btnAdd.setEnabled(true);
+        btnRemove.setEnabled(true);
+        btnSave.setEnabled(true);
+        btnCancel.setEnabled(true);
+        btnNew.setEnabled(false);
+        txtCode.setText(dateString);
+    }//GEN-LAST:event_btnNewActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,11 +192,11 @@ public class TokoJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnAdd;
-    private javax.swing.JToggleButton btnCancel;
-    private javax.swing.JToggleButton btnNew;
-    private javax.swing.JToggleButton btnRemove;
-    private javax.swing.JToggleButton btnSave;
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnNew;
+    private javax.swing.JButton btnRemove;
+    private javax.swing.JButton btnSave;
     private javax.swing.JComboBox<String> comboItem;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
