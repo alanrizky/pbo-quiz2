@@ -144,8 +144,12 @@ public class TokoJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+        int i = 0;
+        i++;
+        
         Date d = new Date();
         SimpleDateFormat f = new SimpleDateFormat("yyMMdd");
+        
         String dateString = f.format(d);
         
         btnAdd.setEnabled(true);
@@ -153,7 +157,8 @@ public class TokoJFrame extends javax.swing.JFrame {
         btnSave.setEnabled(true);
         btnCancel.setEnabled(true);
         btnNew.setEnabled(false);
-        txtCode.setText(dateString);
+        txtCode.setText(dateString + "0" + i);
+        
     }//GEN-LAST:event_btnNewActionPerformed
 
     /**
