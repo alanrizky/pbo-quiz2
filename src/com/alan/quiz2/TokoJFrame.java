@@ -7,10 +7,13 @@ package com.alan.quiz2;
 
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.*;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+import com.alan.quiz2.Transaksi;
 
 /**
  *
@@ -18,12 +21,25 @@ import javax.swing.SwingUtilities;
  */
 public class TokoJFrame extends javax.swing.JFrame {
     
+    private int id = 0;
+    
+    private String code;
+    
+    private DefaultTableModel tModel;
+    
+    private DefaultComboBoxModel cModel;
+    
+    private ArrayList<Item> i = new ArrayList<>();
+    
     public TokoJFrame() {
         initComponents();
+        // untuk mendisable semua button
         btnAdd.setEnabled(false);
         btnRemove.setEnabled(false);
         btnSave.setEnabled(false);
         btnCancel.setEnabled(false);
+        comboItem.setEnabled(false);
+        
         
     }
     
@@ -57,6 +73,12 @@ public class TokoJFrame extends javax.swing.JFrame {
 
         labelItem.setText("Items");
 
+        comboItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboItemActionPerformed(evt);
+            }
+        });
+
         txtJumlahItem.setText("1");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -72,6 +94,11 @@ public class TokoJFrame extends javax.swing.JFrame {
         btnSave.setText("Save");
 
         btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         btnNew.setText("New");
         btnNew.addActionListener(new java.awt.event.ActionListener() {
@@ -134,9 +161,9 @@ public class TokoJFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRemove))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSave)
-                    .addComponent(btnCancel))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCancel)
+                    .addComponent(btnSave))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
 
@@ -156,10 +183,19 @@ public class TokoJFrame extends javax.swing.JFrame {
         btnRemove.setEnabled(true);
         btnSave.setEnabled(true);
         btnCancel.setEnabled(true);
+        comboItem.setEnabled(true);
         btnNew.setEnabled(false);
         txtCode.setText(dateString + "0" + i);
         
     }//GEN-LAST:event_btnNewActionPerformed
+
+    private void comboItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboItemActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments
