@@ -42,7 +42,7 @@ public class Transaksi {
         String obj = "";
         obj += "Kode\t\t : " + this.code + "\n";
         obj += "Daftar Belanja : \n";
-        for (Item item : this.ii) {
+        for (Item item : this.i) {
             obj += "\t" + item.getNama() + "(" + item.getJumlah() + ") : " + item.getTotal() + "\n";
         }
         obj += "Total\t\t : " + this.total;

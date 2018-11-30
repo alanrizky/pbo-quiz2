@@ -32,5 +32,15 @@ public class Barang {
         return s;
     }
     
+    public ArrayList<Float> getHargaBarang() {
+        ArrayList<Float> f = new ArrayList<>();
+        for (float item : this.items.values()) {
+            f.add(item);
+        }
+        return f;
+    }
     
+    public void addItem(String nama, float harga) {
+        this.items.put(nama, harga);
+    }
 }
